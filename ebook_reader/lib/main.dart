@@ -28,7 +28,7 @@ class MyAppBar extends StatelessWidget {
           ),
           const IconButton(
             icon: Icon(Icons.search),
-            tooltip: 'Search',
+            tooltip: 'Search112',
             onPressed: null,
           ),
         ],
