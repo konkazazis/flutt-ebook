@@ -7,23 +7,29 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  //final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   Future<void> _signInWithEmailAndPassword() async {
-    // try {
-    //   final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-    //     email: _emailController.text,
-    //     password: _passwordController.text,
-    //   );
-    //   print('User signed in: ${userCredential.user}');
-    //   // Navigate to the next screen after successful login
-    // } catch (e) {
-    //   print('Error during login: $e');
-    //   // Handle login error (show a snackbar or dialog)
-    // }
+  try {
+    final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+    print('User signed in: ${userCredential.user}');
+
+    if (userCredential.user != null) {
+      Navigator.of(context).pushReplacement( // Replace the current page in the navigation stack
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    }
+  } catch (e) {
+    print('Error during login: $e');
+    // Handle login error (show a snackbar or dialog)
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
