@@ -31,11 +31,27 @@ class _HomePageState extends State<HomePage> {
             _currentIndex = index;
           });
         },
+        selectedItemColor: Colors.blue, // Set the selected icon color
+        unselectedItemColor: Colors.grey, // Set the unselected icon color
+        showSelectedLabels: true, // Hide the label of selected icon
+        showUnselectedLabels: false, // Hide the label of unselected icons
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: 'Bookmarks'),
-          BottomNavigationBarItem(icon: Icon(Icons.library_books), label: 'Bookshelf'),
-          BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'Music'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bookmark),
+            label: 'Bookmarks',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.library_books),
+            label: 'Bookshelf',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.music_note),
+            label: 'Music',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
         ],
       ),
     );
