@@ -11,20 +11,29 @@ class _LoginPageState extends State<LoginPage> {
   //final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool _isLoading = false;
 
   //dummy sign in for test
   Future<void> _signInWithEmailAndPassword() async {
+    setState(() {
+      _isLoading = true; // Set loading to true when login starts
+    });
     try {
       // Simulate successful login (for testing purposes)
       // Replace this with proper Firebase Authentication code in production
       await Future.delayed(Duration(seconds: 2)); // Simulate delay
 
+      // Navigate to home page on successful login
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => HomePage()),
       );
     } catch (e) {
       print('Error during login: $e');
       // Handle login error (show a snackbar or dialog)
+    } finally {
+      setState(() {
+        _isLoading = false; // Set loading to false when login finishes
+      });
     }
   }
 
@@ -50,28 +59,30 @@ class _LoginPageState extends State<LoginPage> {
   //   }
   // }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset('./assets/logo.png', height: 100), // Add this line
-            SizedBox(height: 16),
-            TextField(
-                controller: _emailController,
-                decoration: InputDecoration(labelText: 'Email')),
-            TextField(
-                controller: _passwordController,
-                decoration: InputDecoration(labelText: 'Password')),
-            SizedBox(height: 16),
+   @override
+   Widget build(BuildContext context) {
+     return Scaffold(
+       body: Padding(
+         padding: const EdgeInsets.all(16.0),
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.center,
+           children: <Widget>[
+             Image.asset('./assets/logo.png', height: 100), // Add this line
+             SizedBox(height: 16),
+             TextField(
+                 controller: _emailController,
+                 decoration: InputDecoration(labelText: 'Email')),
+             TextField(
+                 controller: _passwordController,
+                 decoration: InputDecoration(labelText: 'Password')),
+             SizedBox(height: 16),
+              _isLoading
+              ? CircularProgressIndicator() :
             ElevatedButton(
-                onPressed: _signInWithEmailAndPassword, child: Text('Login')),
-          ],
-        ),
-      ),
-    );
-  }
+                 onPressed: _signInWithEmailAndPassword, child: Text('Login')),
+           ],
+         ),
+       ),
+     );
+   }
 }
