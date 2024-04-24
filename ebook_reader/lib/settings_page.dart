@@ -11,7 +11,7 @@ class SettingsPage extends StatelessWidget {
           children: <Widget>[
             CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage('assets/profile_picture.jpg'),
+              backgroundImage: NetworkImage('https://picsum.photos/80'),
             ),
             SizedBox(height: 16),
             Text(

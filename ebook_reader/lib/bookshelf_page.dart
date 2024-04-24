@@ -19,7 +19,7 @@ class BookshelfPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/book_cover.jpg', height: 100, width: 80),
+                  Image.network('https://picsum.photos/80'),
                   SizedBox(height: 8),
                   Text('Ebook Title ${index + 1}'),
                 ],
