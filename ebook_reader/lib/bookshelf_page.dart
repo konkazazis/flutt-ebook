@@ -1,5 +1,6 @@
-import 'package:ebook_reader/uploadButton.dart';
 import 'package:flutter/material.dart';
+import 'package:epub_view/epub_view.dart';
+import 'study_page.dart'; // Import the EpubReader widget
 
 class BookshelfPage extends StatelessWidget {
   @override
@@ -13,13 +14,20 @@ class BookshelfPage extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              // Implement ebook opening here
+              // Navigate to the EpubReader page
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      StudyPage(), // Instantiate EpubReader widget
+                ),
+              );
             },
             child: Card(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.network('https://picsum.photos/80'),
+                  // Add your book cover image here if needed
                   SizedBox(height: 8),
                   Text('Ebook Title ${index + 1}'),
                 ],
