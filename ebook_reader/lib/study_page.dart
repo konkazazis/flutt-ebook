@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:epub_view/epub_view.dart';
+import 'exit_button.dart';
 
 class StudyPage extends StatefulWidget {
   @override
@@ -33,6 +34,10 @@ class _EpubReaderState extends State<StudyPage> {
               textAlign: TextAlign.start,
             ),
           ),
+          actions: [
+            // Show exit button
+            ExitButtonWidget(),
+          ],
         ),
         // Show table of contents
         drawer: Drawer(
